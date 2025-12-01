@@ -11,7 +11,7 @@ namespace AoC2025_Tests
     {
         private string GetSamplePath(int day, string append = "")
         {
-            return Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "Samples", $"sample{day:00}{append}");
+            return Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "Samples", $"{day:00}{append}.txt");
         }
 
         private void TestOneStar(IWorker worker, string dataPath, long expectedResult)
@@ -32,12 +32,12 @@ namespace AoC2025_Tests
             Assert.That(work, Is.EqualTo(expectedResult), $"Two Stars returned {work}, expected {expectedResult}.");
         }
 
-        //[Test]
-        //public void Sample01()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day01.LocationsComparator(), GetSamplePath(1), 11);
-        //    TestTwoStars(new AoC2024.Workers.Day01.LocationsComparator(), GetSamplePath(1), 31);
-        //}
+        [Test]
+        public void Sample01()
+        {
+            TestOneStar(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1), 3);
+            //TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1), 31);
+        }
 
         //[Test]
         //public void Sample02()
@@ -98,7 +98,7 @@ namespace AoC2025_Tests
         //    TestOneStar(new AoC2024.Workers.Day09.Defragmentation(), GetSamplePath(9, "_b"), 11);
         //    TestOneStar(new AoC2024.Workers.Day09.Defragmentation(), GetSamplePath(9, "_c"), 641243);
         //    TestOneStar(new AoC2024.Workers.Day09.Defragmentation(), GetSamplePath(9, "_d"), 91);
-            
+
         //    TestTwoStars(new AoC2024.Workers.Day09.Defragmentation(), GetSamplePath(9), 2858);
         //}
 
@@ -122,7 +122,7 @@ namespace AoC2025_Tests
         //    TestOneStar(new AoC2024.Workers.Day12.GardenFencer(), GetSamplePath(12, "_a"), 140);
         //    TestOneStar(new AoC2024.Workers.Day12.GardenFencer(), GetSamplePath(12, "_b"), 772);
         //    TestOneStar(new AoC2024.Workers.Day12.GardenFencer(), GetSamplePath(12), 1930);
-            
+
         //    TestTwoStars(new AoC2024.Workers.Day12.GardenFencer(), GetSamplePath(12, "_a"), 80);
         //    TestTwoStars(new AoC2024.Workers.Day12.GardenFencer(), GetSamplePath(12, "_b"), 436);
         //    TestTwoStars(new AoC2024.Workers.Day12.GardenFencer(), GetSamplePath(12, "_c"), 236);
@@ -151,7 +151,7 @@ namespace AoC2025_Tests
         //{
         //    TestOneStar(new AoC2024.Workers.Day15.AnglerFishWarehouse(), GetSamplePath(15, "_a"), 2028);
         //    TestOneStar(new AoC2024.Workers.Day15.AnglerFishWarehouse(), GetSamplePath(15), 10092);
-            
+
         //    TestTwoStars(new AoC2024.Workers.Day15.AnglerFishWarehouse { DoubleSize = true },
         //        GetSamplePath(15, "_b"), 618);
         //    TestTwoStars(new AoC2024.Workers.Day15.AnglerFishWarehouse { DoubleSize = true },
@@ -163,7 +163,7 @@ namespace AoC2025_Tests
         //{
         //    TestOneStar(new AoC2024.Workers.Day16.ReindeerRace(), GetSamplePath(16), 7036);
         //    TestOneStar(new AoC2024.Workers.Day16.ReindeerRace(), GetSamplePath(16, "_b"), 11048);
-            
+
         //    TestTwoStars(new AoC2024.Workers.Day16.ReindeerRace(), GetSamplePath(16), 45);
         //    TestTwoStars(new AoC2024.Workers.Day16.ReindeerRace(), GetSamplePath(16, "_b"), 64);
         //}

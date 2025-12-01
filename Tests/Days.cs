@@ -11,7 +11,7 @@ namespace AoC2025_Tests
     {
         private string GetDataPath(int day, string append = "")
         {
-            return Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "Days", $"day{day:00}{append}");
+            return Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "Days", $"{day:00}{append}.txt");
         }
 
         private void TestOneStar(IWorker worker, string dataPath, long expectedResult, SeverityLevel logLevel = SeverityLevel.Always)
@@ -32,12 +32,12 @@ namespace AoC2025_Tests
             Assert.That(work, Is.EqualTo(expectedResult), $"Two Stars returned {work}, expected {expectedResult}.");
         }
 
-        //[Test]
-        //public void Day01()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day01.LocationsComparator(), GetDataPath(1), 2066446);
-        //    TestTwoStars(new AoC2024.Workers.Day01.LocationsComparator(), GetDataPath(1), 24931009);
-        //}
+        [Test]
+        public void Day01()
+        {
+            TestOneStar(new AoC2025.Workers.Day01.DialWorker(), GetDataPath(1), 1118);
+            //TestTwoStars(new AoC2024.Workers.Day01.LocationsComparator(), GetDataPath(1), 24931009);
+        }
 
         //[Test]
         //public void Day02()

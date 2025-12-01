@@ -17,4 +17,17 @@
   <ItemGroup>
     <ProjectReference Include="..\Sources\AoC2025.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Days\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Days\01.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Samples\01.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
