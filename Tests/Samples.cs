@@ -56,7 +56,7 @@ namespace AoC2025_Tests
         public void Sample02()
         {
             TestOneStar(new AoC2025.Workers.Day02.ProductIdWorker(), GetSamplePath(2), 1227775554);
-            //TestTwoStars(new AoC2024.Workers.Day02.RedNoseAnalysis(), GetSamplePath(2), 9);
+            TestTwoStars(new AoC2025.Workers.Day02.ProductIdWorker(), GetSamplePath(2), 4174379265);
         }
 
         //[Test]

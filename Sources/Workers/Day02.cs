@@ -28,6 +28,18 @@ namespace AoC2025.Workers.Day02
         private Regex _invalidIdRegex = new Regex(_invalidIdPattern, RegexOptions.Compiled);
         protected override long WorkOneStar_Implementation()
         {
+            return Compute(_invalidIdRegex);
+        }
+
+        private static string _invalidComplexIdPattern = @"^([0-9]+)\1{1,}$";
+        private Regex _invalidComplexIdRegex = new Regex(_invalidComplexIdPattern, RegexOptions.Compiled);
+        protected override long WorkTwoStars_Implementation()
+        {
+            return Compute(_invalidComplexIdRegex);
+        }
+
+        private long Compute(Regex regex)
+        {
             var result = 0L;
             foreach (var (min, max) in _ranges.Ranges)
             {
@@ -35,7 +47,7 @@ namespace AoC2025.Workers.Day02
                 for (long i = min; i <= max; i++)
                 {
                     var numStr = i.ToString();
-                    if (_invalidIdRegex.Match(numStr).Success)
+                    if (regex.Match(numStr).Success)
                     {
                         result += i;
                         Logger.Log($" > Invalid ID {numStr} (total {result})", SeverityLevel.Low);
