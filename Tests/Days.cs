@@ -39,12 +39,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetDataPath(1), 6289);
         }
 
-        //[Test]
-        //public void Day02()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day02.RedNoseAnalysis(), GetDataPath(2), 383);
-        //    TestTwoStars(new AoC2024.Workers.Day02.RedNoseAnalysis(), GetDataPath(2), 436);
-        //}
+        [Test]
+        public void Day02()
+        {
+            TestOneStar(new AoC2025.Workers.Day02.ProductIdWorker(), GetDataPath(2), 29818212493);
+            //TestTwoStars(new AoC2024.Workers.Day02.RedNoseAnalysis(), GetDataPath(2), 436);
+        }
 
         //[Test]
         //public void Day02b()
