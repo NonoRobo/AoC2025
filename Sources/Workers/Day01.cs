@@ -39,6 +39,74 @@ namespace AoC2025.Workers.Day01
             }
             return zeroCount;
         }
+
+        protected override long WorkTwoStars_Implementation()
+        {
+            var curValue = 50;
+            var zeroClicks = 0;
+            var previousWasHit0 = false;
+            var previousWasHit100 = false;
+
+            Logger.Log($"Start\t->\t{curValue}", SeverityLevel.Low);
+            foreach (var input in _inputs.Inputs)
+            {
+                curValue += input.TrueValue;
+                Logger.Log($"{input.TrueValue.ToString("+0#;-0#")}\t->\t{curValue}", SeverityLevel.Low);
+
+                while (curValue < 0)
+                {
+                    if (previousWasHit0)
+                    {
+                        previousWasHit0 = false;
+                    }
+                    else
+                    {
+                        zeroClicks++;
+                        Logger.Log($"  > Clicked on zero (L) : total {zeroClicks}", SeverityLevel.Low);
+                    }
+
+                    curValue += 100;
+                    Logger.Log($"\t\t->\t{curValue}", SeverityLevel.Low);
+                }
+
+                while (curValue > 100)
+                {
+                    if (previousWasHit100)
+                    {
+                        previousWasHit100 = false;
+                    }
+                    else
+                    {
+                        zeroClicks++;
+                    Logger.Log($"  > Clicked on zero (R) : total {zeroClicks}", SeverityLevel.Low);
+                    }
+
+                    curValue -= 100;
+                    Logger.Log($"\t\t->\t{curValue}", SeverityLevel.Low);
+                }
+
+                previousWasHit0 = false;
+                previousWasHit100 = false;
+
+                if (curValue == 0 || curValue == 100)
+                {
+                    zeroClicks++;
+
+                    if (curValue == 100)
+                    {
+                        previousWasHit100 = true;
+                    }
+                    else
+                    {
+                        previousWasHit0 = true;
+                    }
+
+                        Logger.Log($"  > Clicked on zero (HIT) : total {zeroClicks}", SeverityLevel.Low);
+                }
+            }
+
+            return zeroClicks;
+        }
     }
 
     public class DialInputs

@@ -36,7 +36,20 @@ namespace AoC2025_Tests
         public void Sample01()
         {
             TestOneStar(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1), 3);
-            //TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1), 31);
+            TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1), 6);
+
+            // test "hit on zero" variations
+            TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1, "b"), 4);
+            // test "hit on zero" variations + 100
+            TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1, "bb"), 12);
+            // test big rotations
+            TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1, "c"), 20);
+            // test big rotation after hit on zero
+            TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1, "d"), 3);
+            // L1068
+            TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1, "e"), 11);
+            // my previous error
+            TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetSamplePath(1, "f"), 14);
         }
 
         //[Test]

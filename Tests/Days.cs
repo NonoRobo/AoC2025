@@ -36,7 +36,7 @@ namespace AoC2025_Tests
         public void Day01()
         {
             TestOneStar(new AoC2025.Workers.Day01.DialWorker(), GetDataPath(1), 1118);
-            //TestTwoStars(new AoC2024.Workers.Day01.LocationsComparator(), GetDataPath(1), 24931009);
+            TestTwoStars(new AoC2025.Workers.Day01.DialWorker(), GetDataPath(1), 6289);
         }
 
         //[Test]
