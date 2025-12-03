@@ -63,7 +63,7 @@ namespace AoC2025_Tests
         public void Sample03()
         {
             TestOneStar(new AoC2025.Workers.Day03.JoltageWorker(), GetSamplePath(3), 357);
-            //TestTwoStars(new AoC2024.Workers.Day03.Multiplicator(), GetSamplePath(3), 209);
+            TestTwoStars(new AoC2025.Workers.Day03.JoltageWorker(), GetSamplePath(3), 3121910778619);
         }
 
         //[Test]

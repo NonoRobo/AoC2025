@@ -50,7 +50,7 @@ namespace AoC2025_Tests
         public void Day03()
         {
             TestOneStar(new AoC2025.Workers.Day03.JoltageWorker(), GetDataPath(3), 17031);
-            //TestTwoStars(new AoC2024.Workers.Day03.Multiplicator(), GetDataPath(3), 100189366);
+            TestTwoStars(new AoC2025.Workers.Day03.JoltageWorker(), GetDataPath(3), 168575096286051);
         }
 
         //[Test]

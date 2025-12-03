@@ -1,6 +1,7 @@
 ﻿using AoCTools.Loggers;
 using AoCTools.Workers;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AoC2025.Workers.Day03
 {
@@ -20,34 +21,40 @@ namespace AoC2025.Workers.Day03
 
         protected override long WorkOneStar_Implementation()
         {
-            var totalMaxJoltage = 0;
+            return ProcessHighestJoltageInBanks(2);
+        }
+
+        protected override long WorkTwoStars_Implementation()
+        {
+            return ProcessHighestJoltageInBanks(12);
+        }
+
+        private long ProcessHighestJoltageInBanks(int joltageDigitCount)
+        {
+            var totalMaxJoltage = 0L;
             foreach (var bank in _banks.Banks)
             {
                 Logger.Log($"Processing bank {bank.ToString()}...", SeverityLevel.Low);
 
-                var maxJoltage = -1;
-                for (int cur10 = 0; cur10 < _banks.BankSize - 1; cur10++)
+                var maxJoltage = 0L;
+                var previousDigitIndex = -1;
+                for (int digit = 0; digit < joltageDigitCount; digit++)
                 {
-                    var dozen = maxJoltage / 10;
-                    if (bank.Batteries[cur10] < dozen)
+                    var bestBattery = -1;
+                    var end = bank.Batteries.Length - joltageDigitCount + digit + 1;
+                    for (int i = previousDigitIndex + 1; i < end; i++)
                     {
-                        Logger.Log($"   > skip index {cur10} (out of {_banks.BankSize - 2}) because {bank.Batteries[cur10]} < {dozen}.", SeverityLevel.Low);
-                        continue;
-                    }
-
-                    Logger.Log($" > index {cur10} (out of {_banks.BankSize - 2})", SeverityLevel.Low);
-                    for (int cur1 = cur10 + 1; cur1 < _banks.BankSize; cur1++)
-                    {
-                        var curJoltage = bank.Batteries[cur10] * 10 + bank.Batteries[cur1];
-                        if (curJoltage > maxJoltage)
+                        if (bank.Batteries[i] > bestBattery)
                         {
-                            maxJoltage = curJoltage;
-                            Logger.Log($" > max joltage = {maxJoltage}.", SeverityLevel.Low);
+                            bestBattery = bank.Batteries[i];
+                            previousDigitIndex = i;
                         }
                     }
+                    maxJoltage = maxJoltage * 10 + bestBattery;
+                    Logger.Log($" > [{digit}] Best battery is {bestBattery} (at {previousDigitIndex}) => local joltage {maxJoltage} (from {digit} to {end})");
                 }
                 totalMaxJoltage += maxJoltage;
-                Logger.Log($"Total max joltage = {totalMaxJoltage}.", SeverityLevel.Low);
+                Logger.Log($" > Local joltage {maxJoltage} => Total = {totalMaxJoltage}");
             }
             return totalMaxJoltage;
         }
