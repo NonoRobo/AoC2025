@@ -59,12 +59,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day02.ProductIdWorker(), GetSamplePath(2), 4174379265);
         }
 
-        //[Test]
-        //public void Sample03()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day03.Multiplicator(), GetSamplePath(3), 322);
-        //    TestTwoStars(new AoC2024.Workers.Day03.Multiplicator(), GetSamplePath(3), 209);
-        //}
+        [Test]
+        public void Sample03()
+        {
+            TestOneStar(new AoC2025.Workers.Day03.JoltageWorker(), GetSamplePath(3), 357);
+            //TestTwoStars(new AoC2024.Workers.Day03.Multiplicator(), GetSamplePath(3), 209);
+        }
 
         //[Test]
         //public void Sample04()

@@ -46,19 +46,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day02.ProductIdWorker(), GetDataPath(2), 37432260594);
         }
 
-        //[Test]
-        //public void Day02b()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day02.RedNoseAnalysis(), GetDataPath(2, "b"), 524);
-        //    TestTwoStars(new AoC2024.Workers.Day02.RedNoseAnalysis(), GetDataPath(2, "b"), 569);
-        //}
-
-        //[Test]
-        //public void Day03()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day03.Multiplicator(), GetDataPath(3), 155955228);
-        //    TestTwoStars(new AoC2024.Workers.Day03.Multiplicator(), GetDataPath(3), 100189366);
-        //}
+        [Test]
+        public void Day03()
+        {
+            TestOneStar(new AoC2025.Workers.Day03.JoltageWorker(), GetDataPath(3), 17031);
+            //TestTwoStars(new AoC2024.Workers.Day03.Multiplicator(), GetDataPath(3), 100189366);
+        }
 
         //[Test]
         //public void Day04()
