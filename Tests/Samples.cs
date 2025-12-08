@@ -81,12 +81,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day05.FoodSpoilageWorker(), GetSamplePath(5, "b"), 11);
         }
 
-        //[Test]
-        //public void Sample06()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day06.PastPlaceAnalizer(), GetSamplePath(6), 41);
-        //    TestTwoStars(new AoC2024.Workers.Day06.PastPlaceAnalizer(), GetSamplePath(6), 6);
-        //}
+        [Test]
+        public void Sample06()
+        {
+            TestOneStar(new AoC2025.Workers.Day06.WorksheetWorker(), GetSamplePath(6), 4277556);
+            //TestTwoStars(new AoC2025.Workers.Day06.PastPlaceAnalizer(), GetSamplePath(6), 6);
+        }
 
         //[Test]
         //public void Sample07()

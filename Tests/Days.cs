@@ -67,12 +67,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day05.FoodSpoilageWorker(), GetDataPath(5), 344323629240733);
         }
 
-        //[Test]
-        //public void Day06() // 17s
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day06.PastPlaceAnalizer(), GetDataPath(6), 4973);
-        //    TestTwoStars(new AoC2024.Workers.Day06.PastPlaceAnalizer(), GetDataPath(6), 1482);
-        //}
+        [Test]
+        public void Day06()
+        {
+            TestOneStar(new AoC2025.Workers.Day06.WorksheetWorker(), GetDataPath(6), 4412382293768);
+            //TestTwoStars(new AoC2025.Workers.Day06.WorksheetWorker(), GetDataPath(6), 1482);
+        }
 
         //[Test]
         //public void Day07()
