@@ -24,6 +24,28 @@ namespace AoC2025.Workers.Day04
             return rolls.Count(r => r.Neighbors.Count < 4);
         }
 
+        protected override long WorkTwoStars_Implementation()
+        {
+            var rolls = FindRolls();
+            Logger.Log($"Found {rolls.Count} paper rolls.", SeverityLevel.Low);
+
+            var removedRolls = 0;
+            while (rolls.Count > 0)
+            {
+                var accessibleRolls = rolls.Where(r => r.Neighbors.Count(n => !n.Removed) < 4).ToList();
+                if (accessibleRolls.Count == 0)
+                    break;
+
+                foreach (var accessibleRoll in accessibleRolls)
+                {
+                    accessibleRoll.Removed = true;
+                    rolls.Remove(accessibleRoll);
+                    removedRolls++;
+                }
+            }
+            return removedRolls;
+        }
+
         private List<PaperRollInfo> FindRolls()
         {
             var rolls = new List<PaperRollInfo>();
@@ -83,6 +105,7 @@ namespace AoC2025.Workers.Day04
     {
         public Coordinates Pos { get; set; }
         public List<PaperRollInfo> Neighbors = new List<PaperRollInfo>();
+        public bool Removed { get; set; } = false;
 
         public override string ToString()
         {

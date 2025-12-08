@@ -70,7 +70,7 @@ namespace AoC2025_Tests
         public void Sample04()
         {
             TestOneStar(new AoC2025.Workers.Day04.PaperRollWorker(), GetSamplePath(4), 13);
-            //TestTwoStars(new AoC2025.Workers.Day04.PaperRollWorker(), GetSamplePath(4), 9);
+            TestTwoStars(new AoC2025.Workers.Day04.PaperRollWorker(), GetSamplePath(4), 43);
         }
 
         //[Test]

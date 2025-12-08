@@ -57,7 +57,7 @@ namespace AoC2025_Tests
         public void Day04()
         {
             TestOneStar(new AoC2025.Workers.Day04.PaperRollWorker(), GetDataPath(4), 1367);
-            //TestTwoStars(new AoC2024.Workers.Day04.WordSearcher(), GetDataPath(4), 2003);
+            TestTwoStars(new AoC2025.Workers.Day04.PaperRollWorker(), GetDataPath(4), 9144);
         }
 
         //[Test]
