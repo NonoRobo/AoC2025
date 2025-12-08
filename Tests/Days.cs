@@ -53,12 +53,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day03.JoltageWorker(), GetDataPath(3), 168575096286051);
         }
 
-        //[Test]
-        //public void Day04()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day04.WordSearcher(), GetDataPath(4), 2549);
-        //    TestTwoStars(new AoC2024.Workers.Day04.WordSearcher(), GetDataPath(4), 2003);
-        //}
+        [Test]
+        public void Day04()
+        {
+            TestOneStar(new AoC2025.Workers.Day04.PaperRollWorker(), GetDataPath(4), 1367);
+            //TestTwoStars(new AoC2024.Workers.Day04.WordSearcher(), GetDataPath(4), 2003);
+        }
 
         //[Test]
         //public void Day05()
