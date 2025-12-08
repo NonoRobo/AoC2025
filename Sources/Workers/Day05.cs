@@ -53,6 +53,37 @@ namespace AoC2025.Workers.Day05
             }
             return freshCount;
         }
+
+        protected override long WorkTwoStars_Implementation()
+        {
+            var freshRanges = new List<Range> { _inventory.FreshRanges[0] };
+            Logger.Log($"Range {freshRanges[0]} added to Fresh (1).");
+            foreach (var range in _inventory.FreshRanges.Skip(1))
+            {
+                var curRange = range;
+                var tryOverlapFix = true;
+                do
+                {
+                    Logger.Log($"Analysing range {curRange}...");
+                    var overlapped = freshRanges.Find(fr => fr.IsInRange(curRange, out _));
+                    if (overlapped == null)
+                    {
+                        freshRanges.Add(curRange);
+                        Logger.Log($"Range {curRange} added to Fresh ({freshRanges.Count}).");
+                        tryOverlapFix = false;
+                        continue;
+                    }
+
+                    Logger.Log($" > range {curRange} overlaps with {overlapped}.");
+                    freshRanges.Remove(overlapped);
+                    Logger.Log($"Removed range {overlapped} from Fresh ({freshRanges.Count}).");
+                    var unioned = Range.CreateFromUnion(curRange, overlapped);
+                    Logger.Log($" > using range {unioned[0]} instead of {overlapped} and {curRange}.");
+                    curRange = unioned[0];
+                } while (tryOverlapFix);
+            }
+            return freshRanges.Sum(r => (long)r.Size);
+        }
     }
 
     public class FoodInventory

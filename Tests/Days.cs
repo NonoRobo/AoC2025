@@ -64,7 +64,7 @@ namespace AoC2025_Tests
         public void Day05()
         {
             TestOneStar(new AoC2025.Workers.Day05.FoodSpoilageWorker(), GetDataPath(5), 690);
-            //TestTwoStars(new AoC2024.Workers.Day05.Printer(), GetDataPath(5), 4719);
+            TestTwoStars(new AoC2025.Workers.Day05.FoodSpoilageWorker(), GetDataPath(5), 344323629240733);
         }
 
         //[Test]
