@@ -73,12 +73,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day04.PaperRollWorker(), GetSamplePath(4), 43);
         }
 
-        //[Test]
-        //public void Sample05()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day05.Printer(), GetSamplePath(5), 143);
-        //    TestTwoStars(new AoC2024.Workers.Day05.Printer(), GetSamplePath(5), 123);
-        //}
+        [Test]
+        public void Sample05()
+        {
+            TestOneStar(new AoC2025.Workers.Day05.FoodSpoilageWorker(), GetSamplePath(5), 3);
+            //TestTwoStars(new AoC2024.Workers.Day05.Printer(), GetSamplePath(5), 123);
+        }
 
         //[Test]
         //public void Sample06()
