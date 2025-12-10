@@ -78,7 +78,7 @@ namespace AoC2025_Tests
         public void Day07()
         {
             TestOneStar(new AoC2025.Workers.Day07.TachyonBeamWorker(), GetDataPath(7), 1640);
-            //TestTwoStars(new AoC2025.Workers.Day07.TachyonBeamWorker(), GetDataPath(7), 500335179214836);
+            TestTwoStars(new AoC2025.Workers.Day07.TachyonBeamWorker(), GetDataPath(7), -1);
         }
 
         //[Test]

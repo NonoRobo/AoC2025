@@ -1,6 +1,7 @@
 ﻿using AoCTools.Frame.TwoDimensions.Map.Abstracts;
 using AoCTools.Loggers;
 using AoCTools.Workers;
+using System.Text;
 
 namespace AoC2025.Workers.Day07
 {
@@ -58,6 +59,58 @@ namespace AoC2025.Workers.Day07
 
             return divisionCount;
         }
+
+        protected override long WorkTwoStars_Implementation()
+        {
+            _manifold.Start.BeamWeight = 1;
+            var beamToExtend = new List<TachyonManicell> { _manifold.Start };
+            while (beamToExtend.Any())
+            {
+                var beam = beamToExtend.First();
+                beamToExtend.RemoveAt(0);
+
+                if (beam.Content == TachyonState.Beam)
+                {
+                    continue;
+                }
+                else if (beam.Content == TachyonState.Empty && !beam.IsStart)
+                {
+                    beam.SetContent(TachyonState.Beam);
+                }
+
+                if (!_manifold.TryGetCell(beam.Coordinates.Row + 1, beam.Coordinates.Col, out var nextBeam))
+                {
+                    continue;
+                }
+
+                switch (nextBeam.Content)
+                {
+                    case TachyonState.Empty:
+                        nextBeam.BeamWeight += beam.BeamWeight;
+                        beamToExtend.Add(nextBeam);
+                        break;
+
+                    case TachyonState.Divider:
+                        if (_manifold.TryGetCell(nextBeam.Coordinates.Row, nextBeam.Coordinates.Col - 1, out var dividerLeft))
+                        {
+                            dividerLeft.BeamWeight += beam.BeamWeight;
+                            beamToExtend.Add(dividerLeft);
+                        }
+                        if (_manifold.TryGetCell(nextBeam.Coordinates.Row, nextBeam.Coordinates.Col + 1, out var dividerRight))
+                        {
+                            dividerRight.BeamWeight += beam.BeamWeight;
+                            beamToExtend.Add(dividerRight);
+                        }
+                        break;
+                }
+            }
+
+            var finalBeamCount = _manifold.AllCells.Where(c => c.Coordinates.Row == _manifold.RowCount - 1).Sum(c => c.BeamWeight);
+            Logger.Log($"Final count: {finalBeamCount}");
+            Logger.Log(_manifold.ToWeightString());
+
+            return finalBeamCount;
+        }
     }
 
     public class TachyonManifold : Map<TachyonManicell>
@@ -72,11 +125,26 @@ namespace AoC2025.Workers.Day07
         }
 
         protected override string LogTitle => "=== TACHYON MANIFOLD ===";
+
+        public string ToWeightString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine(LogTitle);
+            foreach (var line in MapCells)
+            {
+                foreach (var cell in line)
+                    sb.Append(cell.ToWeightString());
+                sb.AppendLine();
+            }
+            return sb.ToString();
+        }
     }
 
     public class TachyonManicell : MapCell<TachyonState>
     {
         public bool IsStart { get; set; } = false;
+
+        public long BeamWeight { get; set; } = 0;
 
         public TachyonManicell(TachyonState content, int row, int col) : base(content, row, col)
         { }
@@ -87,6 +155,11 @@ namespace AoC2025.Workers.Day07
         public override string ToString()
         {
             return TypeToString(Content, IsStart);
+        }
+
+        public string ToWeightString()
+        {
+            return Content == TachyonState.Beam ? BeamWeight.ToString() : TypeToString(Content, IsStart);
         }
 
         public void SetContent(TachyonState newContent)
