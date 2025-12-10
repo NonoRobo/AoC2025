@@ -74,12 +74,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day06.WorksheetWorker(true), GetDataPath(6), 7858808482092);
         }
 
-        //[Test]
-        //public void Day07()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day07.RopeBridge(), GetDataPath(7), 10741443549536);
-        //    TestTwoStars(new AoC2024.Workers.Day07.RopeBridge(), GetDataPath(7), 500335179214836);
-        //}
+        [Test]
+        public void Day07()
+        {
+            TestOneStar(new AoC2025.Workers.Day07.TachyonBeamWorker(), GetDataPath(7), 1640);
+            //TestTwoStars(new AoC2025.Workers.Day07.TachyonBeamWorker(), GetDataPath(7), 500335179214836);
+        }
 
         //[Test]
         //public void Day08()

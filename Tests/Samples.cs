@@ -88,12 +88,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day06.WorksheetWorker(true), GetSamplePath(6), 3263827);
         }
 
-        //[Test]
-        //public void Sample07()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day07.RopeBridge(), GetSamplePath(7), 3749);
-        //    TestTwoStars(new AoC2024.Workers.Day07.RopeBridge(), GetSamplePath(7), 11387);
-        //}
+        [Test]
+        public void Sample07()
+        {
+            TestOneStar(new AoC2025.Workers.Day07.TachyonBeamWorker(), GetSamplePath(7), 21);
+            //TestTwoStars(new AoC2024.Workers.Day07.RopeBridge(), GetSamplePath(7), 11387);
+        }
 
         //[Test]
         //public void Sample08()
