@@ -84,8 +84,8 @@ namespace AoC2025_Tests
         [Test]
         public void Sample06()
         {
-            TestOneStar(new AoC2025.Workers.Day06.WorksheetWorker(), GetSamplePath(6), 4277556);
-            //TestTwoStars(new AoC2025.Workers.Day06.PastPlaceAnalizer(), GetSamplePath(6), 6);
+            TestOneStar(new AoC2025.Workers.Day06.WorksheetWorker(false), GetSamplePath(6), 4277556);
+            TestTwoStars(new AoC2025.Workers.Day06.WorksheetWorker(true), GetSamplePath(6), 3263827);
         }
 
         //[Test]
