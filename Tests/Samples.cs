@@ -95,15 +95,12 @@ namespace AoC2025_Tests
             TestTwoStars(new AoC2025.Workers.Day07.TachyonBeamWorker(), GetSamplePath(7), 40);
         }
 
-        //[Test]
-        //public void Sample08()
-        //{
-        //    TestOneStar(new AoC2024.Workers.Day08.Antennas(), GetSamplePath(8, "_a"), 2);
-        //    TestOneStar(new AoC2024.Workers.Day08.Antennas(), GetSamplePath(8), 14);
-
-        //    TestTwoStars(new AoC2024.Workers.Day08.Antennas(), GetSamplePath(8, "_b"), 9);
-        //    TestTwoStars(new AoC2024.Workers.Day08.Antennas(), GetSamplePath(8), 34);
-        //}
+        [Test]
+        public void Sample08()
+        {
+            TestOneStar(new AoC2025.Workers.Day08.LightBoxWorker(10), GetSamplePath(8), 40);
+            TestTwoStars(new AoC2025.Workers.Day08.LightBoxWorker(), GetSamplePath(8), 25272);
+        }
 
         //[Test]
         //public void Sample09()
